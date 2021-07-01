@@ -1,0 +1,66 @@
+import requests
+import smtplib
+
+#API key
+api_file = open("key.txt","r")
+api_key = api_file.read()
+api_file.close()
+
+home = input("May I get your home address?"\n")
+work = input("May I get your work address?\n")
+
+#base url
+url = https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&"
+
+#response
+r = requests.get(url + "origins=" + home + "&destinations=" + work + "&key=" + api_key)
+
+#return time as an interactive response
+time = r.json()["rows"][0]["elements"][0]["duration"]["text"]
+seconds = r.json()["rows"][0]["elements"][0]["duration"]["value"]
+
+print("\n Total time from home to work is",time)
+
+if seconds>4500:
+  sender = employee@gmail.com
+  recipient = employer@gmail.com
+  subject = Calling a sick day
+  message = Hello! Sorry, can't make it to work due to health porblems.
+  
+#email format
+email = "Subject: {}\n\n{}.format(subject,message)
+
+password_file = open("password.txt", "r")
+password = password_file.readline()
+password_file.close()
+
+#calling SMTP
+s = smtplib.SMTP("smtp.gmail.com",587)
+
+#security
+s.starttls()
+
+#authentication
+s.login(sender,password)
+
+#send email
+s.sendmail(sender, recipient, email)
+
+#terminating
+s.quit()
+
+print("Done!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
